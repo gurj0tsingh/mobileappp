@@ -1,0 +1,151 @@
+mainPgae.xaml.cs
+###########################################################
+using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+
+namespace inClass.Views
+{
+    [XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class MainPage : TabbedPage
+    {
+        public MainPage()
+        {
+            InitializeComponent();
+        }
+    }
+}
+
+mainPgae.xaml
+###########################################################
+<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+            xmlns:local="clr-namespace:inClass.Views"
+            x:Class="inClass.Views.MainPage">
+
+    <ContentPage Icon="home_icon.png">
+        <ContentPage.Content>
+            <StackLayout VerticalOptions="Start" HorizontalOptions="Center">
+                <Label Text="Fine Arts" TextColor="Gray"  FontSize = "30" HorizontalOptions="Center"/>
+                <Image Source="home_pic.jpeg"/>
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <ContentPage Icon="a.png">
+        <ContentPage.Content>
+            <StackLayout VerticalOptions="Start"  HorizontalOptions="Center">
+                <Label Text="Sign Up For Fine Arts News" 
+                    HorizontalOptions="Center"
+                    VerticalOptions="CenterAndExpand"
+                    FontSize="Large" 
+                    TextColor="Gray"
+                    Font="Bold"/>
+                <Entry Placeholder="Name" MaxLength="10"/>
+                <Entry IsPassword="True" Placeholder="Password"/>
+                <Entry MaxLength="10" Placeholder="Contact Number" />
+                <Picker x:Name="picker" Title="Select City">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Brampton</x:String>
+                            <x:String>Mississauga</x:String>
+                            <x:String>Toronto</x:String>
+                            <x:String>Hamilton</x:String>
+                            <x:String>Etobicoke</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Picker x:Name="picker1" Title="gender">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Male</x:String>
+                            <x:String>Female</x:String>
+                            <x:String>Others</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <Button Text="Register" VerticalOptions="Center" HorizontalOptions="Center"  />
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+
+    <ContentPage Icon="b.png">
+        <ContentPage.Content>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition />
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.ColumnSpan="2" TextColor="Black" FontSize="25" HorizontalTextAlignment="Center" Grid.Row="0" Grid.Column="0" Text="Portfolio" BackgroundColor="White" />
+                <Label TextColor="Black" FontSize="25" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Grid.Row="1" Grid.Column="0" Text="Laptops" BackgroundColor="White"/>
+                <Label TextColor="Black" FontSize="25" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Grid.Row="1" Grid.Column="1" Text="Printers" BackgroundColor="White"/>
+                <Label TextColor="Black" FontSize="25" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Grid.Row="2" Grid.Column="0" Text="Smart-TV" BackgroundColor="White"/>
+                <Label TextColor="Black" FontSize="25" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Grid.Row="2" Grid.Column="1" Text="Furniture" BackgroundColor="White"/>
+                <Label TextColor="Black" FontSize="25" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Grid.Row="3" Grid.Column="0" Text="Books" BackgroundColor="White"/>
+                <Label TextColor="Black" FontSize="25" HorizontalTextAlignment="Center" VerticalTextAlignment="End" Grid.Row="3" Grid.Column="1" Text="Books" BackgroundColor="White"/>
+
+            </Grid>
+
+        </ContentPage.Content>
+    </ContentPage>
+
+    <ContentPage Icon="camm.png">
+        <ContentPage.Content>
+            <StackLayout VerticalOptions="StartAndExpand" Padding="30">
+                <maps:Map WidthRequest="320" HeightRequest="200"
+                  x:Name="MyMap"
+                  IsShowingUser="true"
+                  MapType="Hybrid" />
+            </StackLayout>
+        </ContentPage.Content>
+    </ContentPage>
+</TabbedPage>
+
+app.xaml.cs
+###########################################################
+using System;
+using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
+using inClass.Views;
+
+
+[assembly: XamlCompilation(XamlCompilationOptions.Compile)]
+namespace inClass
+{
+    public partial class App : Application
+    {
+
+        public App()
+        {
+            InitializeComponent();
+
+
+            MainPage = new MainPage();
+        }
+        
+        
+        protected override void OnStart()
+        {
+            // Handle when your app starts
+        }
+
+        protected override void OnSleep()
+        {
+            // Handle when your app sleeps
+        }
+
+        protected override void OnResume()
+        {
+            // Handle when your app resumes
+        }
+    }
+}
